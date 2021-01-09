@@ -35,4 +35,9 @@ print(len(soup.contents))
 print(soup.contents[0].name)
 
 # Uma string não tem .contents, porque não pode conter nada:
+# text = title_tag.contents[0]
+# print(text.contents)
 
+# Em vez de obtê-los como uma lista, você pode iterar sobre os filhos de uma tag usando o .childrengerador:
+for child in title_tag.children:
+    print(child)
