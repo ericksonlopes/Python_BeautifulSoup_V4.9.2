@@ -17,27 +17,21 @@ and they lived at the bottom of a well.</p>
 soup = BeautifulSoup(html_doc, 'html.parser')
 
 # Os filhos de uma tag estão disponíveis em uma lista chamada .contents:
+titel_tag = soup.title
 head_tag = soup.head
 
-print(head_tag, '\n')
+# Se uma tag tiver apenas um filho e esse filho for um NavigableString, o filho será disponibilizado como .string:
+print(titel_tag.string)
 
-# colocando as tags em uma lista
+# Se o único filho de uma tag for outra tag, e essa tag tiver um .string, a tag pai será considerada igual a
+# .stringsua filha:
 print(head_tag.contents)
+# [<title>The Dormouse's story</title>]
 
-title_tag = head_tag.contents[0]
-print(title_tag)
+print(head_tag.string)
+# 'The Dormouse's story'
 
-print(title_tag.contents, '\n')
 
-# O BeautifulSouppróprio objeto tem filhos. Nesse caso, a tag <html> é filha do BeautifulSoupobjeto .
-print(len(soup.contents))
+# Se uma tag contém mais de uma coisa, não está claro a que .stringse refere, então .stringé definido como None:
 
-print(soup.contents[0].name)
-
-# Uma string não tem .contents, porque não pode conter nada:
-# text = title_tag.contents[0]
-# print(text.contents)
-
-# Em vez de obtê-los como uma lista, você pode iterar sobre os filhos de uma tag usando o .childrengerador:
-for child in title_tag.children:
-    print(child)
+print(soup.html.string)
