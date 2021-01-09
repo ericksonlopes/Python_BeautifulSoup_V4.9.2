@@ -8,3 +8,5 @@ print(tag.b['id'], '\n')
 
 # Você pode acessar esse dicionário diretamente como .attrs:
 print(tag.b.attrs)
+
+print(tag.get('id'))
